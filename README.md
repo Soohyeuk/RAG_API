@@ -8,6 +8,7 @@ A simple Retrieval-Augmented Generation (RAG) API built with FastAPI, using sent
 - Semantic search using cosine similarity
 - RESTful API endpoints
 - Automatic loading of sample data on startup
+- Batch processing for efficient text ingestion
 
 ## Setup
 
@@ -43,22 +44,45 @@ Request body:
 }
 ```
 
-### GET /query
+Response:
+```json
+{
+    "message": "Text successfully ingested",
+    "status_code": 200,
+    "success": true
+}
+```
+
+### GET /query?=`<text>`&k=`<k>`
 Query the vector store for similar texts.
 
 Parameters:
-- `text`: The query text
+- `text`: The query text (required)
 - `k`: Number of results to return (default: 3)
+
+Response:
+```json
+[
+    {
+        "text": "Retrieved text content",
+        "similarity": 0.95
+    }
+]
+```
 
 ## Running Tests
 
 Run the test suite:
 ```bash
-pytest
+pytest tests/
 ```
 
-## API Documentation
+The test suite includes:
 
-Once the server is running, you can access the interactive API documentation at:
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc` 
+### Unit Tests
+- VectorStore initialization and configuration
+- Text ingestion (single and batch)
+- Search functionality
+- Edge cases and error handling
+
+-> Only unit test was created, as the scale of the product is not grand. 

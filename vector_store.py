@@ -11,7 +11,8 @@ class VectorStore:
         self.texts = []
 
     def add(self, texts: Union[str, List[str]]) -> None:
-        """Add text(s) to the vector store.
+        """
+        Add text(s) to the vector store.
         
         Args:
             texts: Either a single string or a list of strings to add
@@ -22,7 +23,8 @@ class VectorStore:
         self.texts.extend(texts_list)
 
     def search(self, query: str, k: int = 3) -> List[tuple]:
-        """Search for similar texts.
+        """
+        Search for similar texts.
         
         Args:
             query: The search query string
