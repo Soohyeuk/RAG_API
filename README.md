@@ -22,3 +22,43 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+## Running the API
+
+Start the server:
+```bash
+uvicorn app:app --reload
+```
+
+The API will be available at `http://localhost:8000`
+
+## API Endpoints
+
+### POST /ingest
+Ingest new text into the vector store.
+
+Request body:
+```json
+{
+    "text": "Your text here"
+}
+```
+
+### GET /query
+Query the vector store for similar texts.
+
+Parameters:
+- `text`: The query text
+- `k`: Number of results to return (default: 3)
+
+## Running Tests
+
+Run the test suite:
+```bash
+pytest
+```
+
+## API Documentation
+
+Once the server is running, you can access the interactive API documentation at:
+- Swagger UI: `http://localhost:8000/docs`
+- ReDoc: `http://localhost:8000/redoc` 
