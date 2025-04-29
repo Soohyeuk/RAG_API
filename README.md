@@ -86,3 +86,8 @@ The test suite includes:
 - Edge cases and error handling
 
 -> Only unit test was created, as the scale of the product is not grand. 
+
+
+httpi POST http://localhost:8000/ingest -d '{"text": "apple is a fruit that is sweet and sour. it tastes really good"}'
+httpi GET "http://localhost:8000/query?text=what%is%apple?"                        
+
